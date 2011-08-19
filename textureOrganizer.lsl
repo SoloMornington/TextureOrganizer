@@ -41,6 +41,30 @@ integer gRows = 5;
 integer gColumns = 4;
 float gMargin = 0.1; // margin is calculated as fraction of cube size
 
+// The base/root prim
+list gBase = [
+		PRIM_TYPE, PRIM_TYPE_TUBE, PRIM_HOLE_DEFAULT,
+        <0.0, 0.5, 0.0>, // cut
+        0.35, //hollow
+        ZERO_VECTOR, // twist
+        <1.0, 0.1, 0.0>, // hole size
+        ZERO_VECTOR, // top shear
+        <0.25, 1.0, 0.0>, // profile cut
+        ZERO_VECTOR, // taper
+        1.0, // revolutions
+        0.0, // offset
+        0.0, // skew
+        PRIM_SIZE, <2.5, 0.5, 0.5>,
+        // blank textures for all sides
+        PRIM_TEXTURE, ALL_SIDES, TEXTURE_BLANK, <1.0, 1.0, 0.0>, ZERO_VECTOR, 0.0,
+        PRIM_FULLBRIGHT, ALL_SIDES, 0,
+        PRIM_COLOR, ALL_SIDES, <1.0, 1.0, 1.0>, 1.0,
+        // control textures for the control faces
+        PRIM_TEXTURE, 6, "b6fd4e55-6120-abb5-af43-aa1f223dd4fd", <1.0, 1.0, 0.0>, ZERO_VECTOR, 0.0,
+        PRIM_TEXTURE, 7, "b6fd4e55-6120-abb5-af43-aa1f223dd4fd", <-1.0, 1.0, 0.0>, ZERO_VECTOR, 0.0,
+        PRIM_TEXTURE, 4, "b6fd4e55-6120-abb5-af43-aa1f223dd4fd", <5.0, 1.0, 0.0>, <0.150, -0.5, 0.0>, 0.0
+        ];
+
 // A default cube....
 list gCube = [PRIM_TYPE, PRIM_TYPE_BOX, PRIM_HOLE_DEFAULT,
         <0.0, 1.0, 0.0>, // cut
@@ -416,6 +440,8 @@ default
 {
     state_entry()
     {
+    	// Set up the base prim's geometry.
+    	llSetLinkPrimitiveParamsFast(LINK_ROOT, gBase);
     	// zero all the prims, or the accounting will be completely off
     	// for the other states.
         zeroAllPrimsExcept(-1);
