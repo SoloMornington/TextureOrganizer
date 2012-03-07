@@ -119,7 +119,7 @@ integer gConfigSecurityGroupPrim;
 integer gConfigSecurityAllPrim;
 
 // the textures we like.
-string gModeTexture = "c6ece822-b257-9dbd-a583-1111ca9cb728"; // sculpty/texture mode, give all
+string gModeTexture = "c6ece822-b257-9dbd-a583-1111ca9cb728"; // sculpty/texture mode/give all
 string gSecurityTexture = "842a2cb2-fd8f-d456-3b30-bbb762f2028f"; // owner/group/all
 
 // how long should we show the config menu before timing-out
